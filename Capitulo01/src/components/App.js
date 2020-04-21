@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import { Route } from 'react-router-dom';
 import LoginContainer from './LoginContainer';
+import ChatContainer from './ChatContainer';
 import './app.css';
 
 class App extends Component {
@@ -16,8 +18,9 @@ class App extends Component {
 
     render() {
         return (
-            <div id="container" className="inner-container">
-                <LoginContainer />
+            <div id="container">
+                <Route path="/login" component={LoginContainer} />
+                <Route exact path="/" component={ChatContainer} />
             </div>
         );
     }
