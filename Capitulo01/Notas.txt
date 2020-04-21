@@ -77,3 +77,26 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
       }),
     ],
   },
+
+
+
+  https://stackoverflow.com/questions/39899109/cannot-login-with-the-firebase-cli
+
+  firebase login --no-localhost
+
+  
+
+
+
+  Firebase products (eg. Auth) also need to be downloaded from the CDN
+
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+Reference: https://firebase.google.com/docs/web/setup
+
+https://stackoverflow.com/questions/59357268/uncaught-typeerror-firebase-auth-is-not-a-function
+
+
+Ojo! :
+secrets.js lo despliega y es accesible
+
+
