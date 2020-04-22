@@ -5,6 +5,9 @@ import ChatContainer from './ChatContainer';
 import UserContainer from './UserContainer';
 import './app.css';
 
+
+
+
 class App extends Component {
     state = {user: null};
 
@@ -17,14 +20,25 @@ class App extends Component {
             }
         });
 
-    }
+    };
+
+    handleSubmitMessage = msg => {
+        //Haz algo ....
+        console.log(msg);
+    };
+
 
     render() {
         return (
             <div id="container">
                 <Route path="/login" component={LoginContainer} />
-                <Route exact path="/" component={ChatContainer} />
-                <Route path="/users/:id" component={UserContainer} />
+                <Route
+                 exact 
+                 path="/" 
+                 render={() => <ChatContainer onSubmit={this.handleSubmitMessage} />}
+                 />
+                <Route path="/users/:>" component={UserContainer} />
+                
             </div>
         );
     }
