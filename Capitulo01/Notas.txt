@@ -96,6 +96,26 @@ Reference: https://firebase.google.com/docs/web/setup
 https://stackoverflow.com/questions/59357268/uncaught-typeerror-firebase-auth-is-not-a-function
 
 
+
+
+firebase.database is not a function
+
+https://stackoverflow.com/questions/38248723/firebase-database-is-not-a-function
+
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+
+
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+
+
+
+
+
+
 Ojo! :
 secrets.js lo despliega y es accesible
 
