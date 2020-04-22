@@ -100,3 +100,12 @@ Ojo! :
 secrets.js lo despliega y es accesible
 
 
+npm install -g firebase-tools
+firebase login --no-localhost
+yarn start
+yarn build
+yarn deploy
+
+
+
+

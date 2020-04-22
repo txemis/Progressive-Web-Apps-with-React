@@ -35,15 +35,19 @@ class LoginContainer extends Component {
             .auth()
             .signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(res => {
-                console.log(res);
+                this.onLogin();
             })
-            .catch(err => {
-                if (err.code === 'auth/user-not-found') {
+            .catch(error => {
+                if (error.code === 'auth/user-not-found') {
                     this.signup();
                 }else {
                     this.setState({error: 'Error logging in.'});
                 }
             });
+    } 
+
+    onLogin() {
+        this.props.history.push('/');
     }
 
     signup() {
@@ -53,8 +57,8 @@ class LoginContainer extends Component {
             .then(res => {
                 console.log(res);
             })
-            .catch(err => {
-                console.log(err);
+            .catch(error => {
+                console.log(error);
                 this.setState({error: 'Error signing up.'});
             });
 
