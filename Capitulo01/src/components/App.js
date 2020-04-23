@@ -9,18 +9,35 @@ import './app.css';
 
 
 class App extends Component {
-    state = {user: null};
+    state = {user: null, messages: [] };
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.setState({ user });
             }else{
                 this.props.history.push('/login')
             }
         });
+        firebase
+        .database()
+        .ref('/messages')
+        .on('value', snapshot => {
+            this.onMessage(snapshot);
+        });
 
     };
+
+        onMessage = snapshot => {
+            const messages = Object.keys(snapshot.val()).map(key => {
+                const msg = snapshot.val()[key];
+                msg.id = key;
+                return msg;
+            });
+            this.setState({ messages });
+        };
+
+
 
     handleSubmitMessage = msg => {
         const data = {
@@ -43,10 +60,15 @@ class App extends Component {
                 <Route
                  exact 
                  path="/" 
-                 render={() => <ChatContainer onSubmit={this.handleSubmitMessage} />}
+                 render={() => (
+                 <ChatContainer 
+                    onSubmit={this.handleSubmitMessage}
+                    user={this.state.user}
+                    messages={this.state.messages} 
+                    />
+                )}
                  />
-                <Route path="/users/:>" component={UserContainer} />
-                
+                <Route path="/users/:>" component={UserContainer} />                
             </div>
         );
     }
