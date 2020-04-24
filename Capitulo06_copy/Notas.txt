@@ -1,0 +1,131 @@
+python3 -m http.server 8080
+
+
+
+gitpod /workspace/Progressive-Web-Apps-with-React/Capitulo01 $ node_modules/.bin/webpack-dev-server --help
+
+
+--public              The public hostname/ip address of the
+                        server                           [string]
+  --host                The hostname/ip address the server will
+                        bind to   [string] [default: "localhost"]
+  --allowed-hosts       A comma-delimited string of hosts that
+                        are allowed to access the dev server
+                                                         [string]
+
+
+
+Viejos:
+webpack-dev-server 3.10.3
+webpack 3.5.4
+
+Ahora:
+ "webpack": "^4.42.1",
+    "webpack-dev-server": "^3.10.3"
+
+
+
+
+webpack.config.js
+Añadido y parece que ya no es necesario host y disableHostCheck
+
+devServer: {
+        contentBase: "./pubic",
+        historyApiFallback: true,
+        inline: true,
+        host: '0.0.0.0',
+        disableHostCheck: true,
+    }
+};
+
+
+
+gitpod /workspace/Progressive-Web-Apps-with-React/Capitulo01 $ yarn add babel-loader@7
+
+
+
+yearn bundle
+
+Error: webpack.optimize.UglifyJsPlugin has been removed, please use config.optimization.minimize instead.
+
+https://github.com/wuweijia/wuweijia.github.io/issues/46
+
+antes:
+
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false,
+      },
+    }),
+  ],
+
+
+ahora:
+
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        sourceMap: true,
+        compress: {
+          warnings: false,
+        },
+      }),
+    ],
+  },
+
+
+
+  https://stackoverflow.com/questions/39899109/cannot-login-with-the-firebase-cli
+
+  firebase login --no-localhost
+
+  
+
+
+
+  Firebase products (eg. Auth) also need to be downloaded from the CDN
+
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+Reference: https://firebase.google.com/docs/web/setup
+
+https://stackoverflow.com/questions/59357268/uncaught-typeerror-firebase-auth-is-not-a-function
+
+
+
+
+firebase.database is not a function
+
+https://stackoverflow.com/questions/38248723/firebase-database-is-not-a-function
+
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+
+
+            <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+
+
+
+
+
+
+Ojo! :
+secrets.js lo despliega y es accesible
+
+
+npm install -g firebase-tools
+firebase login --no-localhost
+yarn start
+yarn build
+yarn deploy
+
+
+
+á '  ´ `  `
