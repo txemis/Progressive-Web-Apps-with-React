@@ -15,3 +15,7 @@ ports:
 tasks:
   - init: echo 'init script' # runs during prebuild
     command: echo 'start script'
+
+vscode:
+  extensions:
+    - vscodevim.vim@1.13.1:SI3AUi8tRZQWIfdXgXHbOQ==
