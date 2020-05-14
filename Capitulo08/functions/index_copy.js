@@ -8,33 +8,25 @@ admin.initializeApp(functions.config().firebase);
 
 exports.sendNotifications = functions.database
     .ref('/messages/{messageId}')
-    .onWrite((change,context) => {
+    .onWrite(event => {
 
-        //const snapshot = event.data;
-            if (change.before.exists()) { // data before the write
+        const snapshot = event.data;
+        if (snapshot.previous.exist()) {
+            console.log('previous existe!!!');
+            console.log(snapshot.previous.val());
+            if (snapshot.previous.val()) {
                 return;
+            }    
+        }
+
+        const payload = {
+            notification: {
+                title: `${snapshot.val().author}`,
+                body: `${snapshot.val().msg}`,
+                icon: 'assets/icon.png',
+                click_action: `https://${functions.config().firebase.authDomain}`
             }
-                //const snapshot = change.after.data; // data after the write
-                const snapshot = change.after; // data after the write
-
-                const payload = {
-                    notification: {
-                        title: `${snapshot.val().author}`,
-                        body: `${snapshot.val().msg}`,
-                        icon: 'assets/icon.png',
-                        //click_action: `https://${functions.config().firebase.authDomain}` //obsoleto
-                        //click_action: `https://${PROJECT_ID}.firebaseapp.com`
-                        //click_action: `https://${process.env.GCLOUD_PROJECT}.web.app` //OK manda mensaje pero a dominio del gitpod
-                        //click_action: `https://${process.env.GCLOUD_PROJECT}.firebaseapp.com` //dominio alternativo
-                        click_action: `https://chatastrophe-fdf84.web.app`  //habría que buscar su place-holder general
-
-                    }
-
-
-                };
-            
-
-        
+        };
 
         return admin
             .database()

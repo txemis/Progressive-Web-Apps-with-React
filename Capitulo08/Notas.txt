@@ -134,3 +134,8 @@ npm install -g firebase@7.14.1
 
 
 á '  ´ `  `
+
+6/05/2020 20:43  Problemas: => 
+1.me mando a mi mismo
+2.teniendo foco avisa con notificación
+3.mezcla los dos dominios
