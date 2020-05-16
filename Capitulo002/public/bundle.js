@@ -9715,11 +9715,28 @@ module.exports = getHostComponentFromComposite;
 /* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var React = __webpack_require__(82);
-var ReactDOM = __webpack_require__(101);
+"use strict";
 
-ReactDOM.render(React.createElement('h1', null, 'Hello from react!'), document.getElementById('root'));
 
+var _react = __webpack_require__(82);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(101);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//ReactDOM.render(React.createElement('h1', null, 'Hello from react!'), document.getElementById('root'));
+//var React = require('react');
+//var ReactDOM = require('react-dom');
+
+_reactDom2.default.render(_react2.default.createElement(
+  'h1',
+  null,
+  'Hello from ES6!'
+), document.getElementById('root'));
 
 /***/ }),
 /* 82 */
