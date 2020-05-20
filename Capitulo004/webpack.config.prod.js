@@ -1,13 +1,28 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
+
 
 module.exports = {
+    mode: 'production',
     entry: __dirname + "/src/index.js",
     output: {
         //path: __dirname + "/public",   //cambiamos para producción
         path: __dirname + "/build",
         filename: "bundle.js",
         publicPath: "./",
+    },
+    optimization: {
+        minimizer: [
+        new UglifyJsPlugin({
+            sourceMap: true,
+            uglifyOptions: {
+                compress: false,
+                warnings: false,
+            },
+        }),
+        ],
     },
     module: {
         rules: [
@@ -23,15 +38,23 @@ module.exports = {
                 }
                 
             },
-            /**
             {
                 test: /\.css$/,
                 use: [
                     { loader: "style-loader" },
                     { loader: "css-loader" }
                 ]
-            }
-            **/
+            },
+            {
+                exclude: [/\.html$/, /\.(js|jsx)$/, /\.css$/, /\.json$/],
+                use:{
+                    loader: "file-loader" ,
+                    options: {
+                        name: "static/media/[name].[ext]"
+                    }
+                }
+            },
+            
         ]
         
     },
@@ -56,8 +79,26 @@ module.exports = {
                 minifyCSS: true,
                 minifyURLs: true,
             },
+        }),
+        new ManifestPlugin({
+            fileName: 'asset-manifest.json'
+        }),
+        /*
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                reduce_vars: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: true
         })
+        */
+    
     ],
+    
+
 
     /**
     module: {

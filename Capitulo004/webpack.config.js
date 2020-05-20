@@ -1,3 +1,7 @@
+
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
 module.exports = {
     entry: __dirname + "/src/index.js",
     output: {
@@ -31,6 +35,16 @@ module.exports = {
         ]
         
     },
+
+
+    plugins: [
+        //new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: __dirname + "/public/index.html", 
+        })
+    ],
+
 
 
     /**
