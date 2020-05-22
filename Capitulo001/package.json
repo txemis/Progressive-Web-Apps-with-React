@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-
   "scripts": {
-    "build": "node_modules/.bin/webpack"
+    "build": "node_modules/.bin/webpack",
+    "start": "node_modules/.bin/webpack-dev-server"
   },
-
   "dependencies": {
     "react": "15.6.1",
     "react-dom": "15.6.1",
-    "webpack": "3.5.4"
+    "webpack": "4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "3.10.3"
   }
 }
