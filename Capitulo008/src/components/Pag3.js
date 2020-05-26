@@ -1,0 +1,1 @@
+crear con "function-bassed component"

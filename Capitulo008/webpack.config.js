@@ -1,9 +1,15 @@
 
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-    entry: __dirname + "/src/index.js",
+    entry: [
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        __dirname + "/src/index.js",
+    ],
     output: {
         path: __dirname + "/public",
         filename: "bundle.js",
@@ -18,7 +24,7 @@ module.exports = {
                         loader: 'babel-loader' ,
                         options: {
                             presets: ['es2015','react'],
-                            plugins: [/**'react-hot-loader/babel',**/'transform-class-properties']
+                            plugins: ['react-hot-loader/babel','transform-class-properties']
                         }
                 }
                 
@@ -61,6 +67,11 @@ module.exports = {
             },
         ]
     },**/
+
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
+
 
     //Podría haber un módulo de Dev server para facilitar el desarrollo
     //Lo he evitado aquí
