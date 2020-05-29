@@ -10,13 +10,15 @@ export default class Pag2 extends Component
     };
     render() {
         return (
-            <div id="ChatContainer">
+            <div id="ChatContainer" className="inner-container">
                 <Header>
                     <button className="red" onClick={this.handleLogout}>
                         Next Pag
                     </button>
                 </Header>
-                <h1>Hola desde Página 2!</h1>
+                {/*<h1>Hola desde Página 2!</h1>*/}
+                <div id="message-container">
+                </div>
             </div>
         );
     }
