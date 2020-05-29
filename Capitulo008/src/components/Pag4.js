@@ -1,23 +1,27 @@
-//crear con "class-bassed component"
-// Pag2 == ChatContainer
+//crear con "function-bassed component"
 import React, { Component } from 'react';
 import Header from './Header';
 
-export default class Pag2 extends Component
-{
-    handleLogout = () => {
-        this.props.history.push('/');
-    };
-    render() {
-        return (
+/*
+handleLogout = () => {
+    this.props.history.push('/');
+}
+*/
+
+const Pag4 = () => {
+    return (
             <div id="ChatContainer">
                 <Header>
+                    {/*
                     <button className="red" onClick={this.handleLogout}>
                         Pag anterior
                     </button>
+                    */}
                 </Header>
-                <h1>Hola desde Página 3!</h1>
+                <h1>Hola desde Página 4!</h1>
             </div>
         );
-    }
-}
+
+};
+
+export default Pag4;
